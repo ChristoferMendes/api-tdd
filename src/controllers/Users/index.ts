@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
 
-const UserRouter = () => {
-  const findAll = (req: Request, res: Response) => {
-    const users = [{ name: 'John Doe', email: 'john@gmail.com' }];
+const UserRouter = (app: any) => {
+  const findAll = async (req: Request, res: Response) => {
+    const result = await app.db('users').select();
 
-    res.status(200).json(users);
+    res.status(200).json(result[0]);
   };
 
-  const create = (req: Request, res: Response) => {
-    res.status(201).json(req.body);
+  const create = async (req: Request, res: Response) => {
+    const result = await app.db('users').insert(req.body, '*');
+
+    res.status(200).json(result[0]);
   };
 
   return { findAll, create };
