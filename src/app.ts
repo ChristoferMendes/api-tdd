@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
+import Middlewares from './config/middlewares';
 
 const app = express();
-
-app.use(bodyParser.json());
+Middlewares(app);
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!');
