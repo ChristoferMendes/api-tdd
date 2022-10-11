@@ -7,7 +7,7 @@
     "build": "sucrase ./src -d ./dist --transforms typescript,imports",
     "test": "npx jest",
     "lint": "eslint src/** test/** --fix",
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon src/services/server.ts",
     "secure-mode": "npx jest --watch --verbose"
   },
   "keywords": [],
